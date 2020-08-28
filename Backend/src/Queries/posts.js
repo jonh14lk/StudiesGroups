@@ -33,7 +33,7 @@ router.get("/:postId", async (req, res) => {
     const post = await Post.findById(req.params.postId);
     res.json(post);
   } catch (err) {
-    res.json({ message: "error" });
+    res.json({ message: "user not found" });
   }
 });
 
@@ -43,7 +43,7 @@ router.delete("/:postId", async (req, res) => {
     const removedPost = await Post.remove({ _id: req.params.postId });
     res.json(removedPost);
   } catch (err) {
-    res.json({ message: "error" });
+    res.json({ message: "user not found" });
   }
 });
 
@@ -62,7 +62,7 @@ router.patch("/:postId", async (req, res) => {
     );
     res.json(UpdatedPost);
   } catch (err) {
-    res.json({ message: "error" });
+    res.json({ message: "user not found" });
   }
 });
 

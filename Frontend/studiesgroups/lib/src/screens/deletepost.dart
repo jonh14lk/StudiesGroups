@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import '../api/listall.dart';
-import '../api/create.dart';
 import 'allposts.dart';
+import '../api/delete.dart';
 
-class Add extends StatelessWidget {
-  final controllerTitle = TextEditingController();
-  final controllerDescription = TextEditingController();
-  final controllerContact = TextEditingController();
+class Delete extends StatelessWidget {
+  final controllerID = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class Add extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Título",
+              "Digite o ID do post que deseja apagar",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -34,47 +32,15 @@ class Add extends StatelessWidget {
             ),
             Container(
               child: TextField(
-                controller: controllerTitle,
+                controller: controllerID,
               ),
             ),
             SizedBox(
-              height: 50.0,
-            ),
-            Text(
-              "Descrição",
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-              ),
-            ),
-            Container(
-              child: TextField(
-                controller: controllerDescription,
-              ),
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
-            Text(
-              "Link para contato",
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.teal,
-              ),
-            ),
-            Container(
-              child: TextField(
-                controller: controllerContact,
-              ),
-            ),
-            SizedBox(
-              height: 50.0,
+              height: 15.0,
             ),
             RaisedButton(
               child: Text(
-                "    Criar Post    ",
+                "    Apagar Post    ",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
@@ -82,17 +48,12 @@ class Add extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
-                bool ret = await createPost(
-                  controllerTitle.text,
-                  controllerDescription.text,
-                  controllerContact.text,
-                );
+                bool ret = await deletePost(controllerID.text);
                 await getPosts();
                 if (ret == true) {
-                  showID(
-                      context, "ID do seu post:", posts[posts.length - 1].id);
+                  showPopup(context, "Post apagado com sucesso!");
                 } else {
-                  showID(context, "Erro ao criar post", "");
+                  showPopup(context, "Post não encontrado");
                 }
               },
               color: Colors.teal,
@@ -105,17 +66,11 @@ class Add extends StatelessWidget {
   }
 }
 
-showID(BuildContext context, String title, String content) {
+showPopup(BuildContext context, String message) {
   AlertDialog popup = AlertDialog(
     backgroundColor: Color(0xFF2d3447),
-    title: Text(
-      title,
-      style: TextStyle(
-        color: Colors.teal,
-      ),
-    ),
-    content: SelectableText(
-      content,
+    title: SelectableText(
+      message,
       style: TextStyle(
         color: Colors.teal,
       ),

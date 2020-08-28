@@ -11,7 +11,7 @@ List<Post> parse(String responseBody) {
 
 Future getPosts() async {
   posts.clear();
-  final res = await http.get('http://localhost:3000'); // localhost:3000
+  final res = await http.get('http://localhost:3000/'); // localhost:3000
   String st = res.body;
   posts = parse(st);
 }

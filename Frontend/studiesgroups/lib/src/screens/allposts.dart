@@ -101,18 +101,6 @@ class Home extends StatelessWidget {
                         color: Colors.teal,
                       ),
                     ),
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/add');
-                      },
-                      child: Text(
-                        'Adicionar Post',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.teal,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 SizedBox(
