@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 Future<bool> createPost(String title, String des, String whatsapp) async {
   final http.Response response = await http.post(
-    'http://localhost:3000', // localhost:3000
+    'http://localhost:3000/', // localhost:3000
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -15,7 +15,6 @@ Future<bool> createPost(String title, String des, String whatsapp) async {
     }),
   );
   final parsed = json.decode(response.body);
-  print(parsed['message']);
   if (parsed['message'] == "error") {
     return false;
   }

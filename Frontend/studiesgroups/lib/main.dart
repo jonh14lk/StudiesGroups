@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'src/api/listall.dart';
 import 'src/screens/allposts.dart';
-import 'src/screens/createpost.dart';
-import 'src/screens/deletepost.dart';
+import 'src/screens/updatepost.dart';
+import 'src/screens/connectionfailed.dart';
+import 'src/screens/post.dart';
 import 'src/Navigation/nav.dart';
 
+bool can = true;
+
 void main() async {
-  await getPosts();
-  construct();
-  runApp(MaterialApp(initialRoute: '/', routes: {
-    '/': (context) => App(),
-    '/home': (context) => Home(),
-    '/add': (context) => Add(),
-    '/delete': (context) => Delete(),
-  }));
+  await http.get('http://localhost:3000/').timeout(
+    Duration(seconds: 5),
+    onTimeout: () {
+      can = false;
+      return;
+    },
+  );
+  if (can == false) {
+    runApp(MaterialApp(
+      initialRoute: '/failscreen',
+      routes: {
+        '/': (context) => Nav(),
+        '/updatedata': (context) => UpdateData(),
+        '/failscreen': (context) => FailScreen(),
+        '/showpost': (context) => ShowPost(),
+      },
+    ));
+  } else {
+    await getPosts();
+    construct();
+    runApp(MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Nav(),
+        '/updatedata': (context) => UpdateData(),
+        '/failscreen': (context) => FailScreen(),
+        '/showpost': (context) => ShowPost(),
+      },
+    ));
+  }
 }

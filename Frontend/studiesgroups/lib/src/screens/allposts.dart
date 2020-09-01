@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:studiesgroups/src/screens/post.dart';
 import '../api/listall.dart';
 
+BuildContext contextt;
 List<Widget> cardList = [];
-var imgCard =
-    'https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&w=1000&q=80';
+var imgCard = 'https://i.ytimg.com/vi/12g2t7G54nA/maxresdefault.jpg';
 
 void construct() {
   cardList.clear();
   for (var i = 0; i < posts.length; i++) {
+    String title = posts[i].title;
+    String description = posts[i].description;
+
+    if (posts[i].description.length > 100) {
+      description = description.substring(0, 100) + '...';
+    }
+    if (posts[i].title.length > 30) {
+      title = title.substring(0, 30) + '...';
+    }
+
     var cardItem = ClipRRect(
       borderRadius: BorderRadius.circular(30.0),
       child: AspectRatio(
@@ -26,7 +36,7 @@ void construct() {
                   Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                    child: Text(posts[i].title,
+                    child: Text(title,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
@@ -37,7 +47,7 @@ void construct() {
                     padding:
                         EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     child: Text(
-                      posts[i].description,
+                      description,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
@@ -50,10 +60,12 @@ void construct() {
                   Container(
                     child: FlatButton(
                       onPressed: () async {
-                        await launch(posts[i].whatsapp);
+                        getInfo(posts[i].title, posts[i].description,
+                            posts[i].whatsapp, posts[i].id);
+                        Navigator.pushNamed(contextt, '/showpost');
                       },
                       child: Text(
-                        'Contato',
+                        'Ver mais',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Color(0xFF2d3447),
@@ -82,6 +94,7 @@ void construct() {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    contextt = context;
     return Scaffold(
       backgroundColor: Color(0xFF2d3447),
       body: SingleChildScrollView(
