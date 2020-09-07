@@ -10,7 +10,7 @@ import 'src/Navigation/nav.dart';
 bool can = true;
 
 void main() async {
-  await http.get('http://localhost:3000/').timeout(
+  await http.get('https://studiesgroups.herokuapp.com/').timeout(
     Duration(seconds: 5),
     onTimeout: () {
       can = false;

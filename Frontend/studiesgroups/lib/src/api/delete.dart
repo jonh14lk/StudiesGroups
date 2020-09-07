@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 Future<bool> deletePost(String id) async {
   final http.Response response = await http.delete(
-    'http://localhost:3000/$id',
+    'https://studiesgroups.herokuapp.com/$id',
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

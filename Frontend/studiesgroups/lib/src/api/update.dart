@@ -9,7 +9,7 @@ Future<bool> updatePost(
   String id,
 ) async {
   final http.Response response = await http.patch(
-    'http://localhost:3000/$id',
+    'https://studiesgroups.herokuapp.com/$id',
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
