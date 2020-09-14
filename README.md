@@ -8,6 +8,8 @@
 
 </div>
 
+<br>
+
 App to make and create studies groups that uses Flutter and NodeJS.
 
 <div align="row">
