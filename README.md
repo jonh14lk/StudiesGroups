@@ -4,7 +4,7 @@
 
 ![](https://github-size-badge.herokuapp.com/jonh14lk/StudiesGroups.svg) ![](https://img.shields.io/badge/last%20commit-September-yellow) ![](https://img.shields.io/badge/Dart-83.9%25-blue)
 
-<img src="https://i.ibb.co/z8G71vL/logo.png" width="150" height="150"/>
+<img src="https://i.ibb.co/z8G71vL/logo.png" width="100" height="100"/>
 
 </div>
 
