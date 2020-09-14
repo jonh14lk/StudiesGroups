@@ -26,7 +26,7 @@ class Update extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Digite o ID do post que deseja editar",
+              "ID of the post you want to edit",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class Update extends StatelessWidget {
             ),
             RaisedButton(
               child: Text(
-                "    Editar Post    ",
+                "    Edit post    ",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class Update extends StatelessWidget {
               onPressed: () async {
                 bool ret = await findPost(controllerID.text);
                 if (ret == false) {
-                  showMessage(context, "Post não encontrado");
+                  showMessage(context, "The post does not exist");
                 } else {
                   id = controllerID.text;
                   Navigator.pushNamed(context, '/updatedata');
@@ -91,7 +91,7 @@ class UpdateData extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Título",
+              "Title",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class UpdateData extends StatelessWidget {
               height: 50.0,
             ),
             Text(
-              "Descrição",
+              "Description",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -123,7 +123,7 @@ class UpdateData extends StatelessWidget {
               height: 50.0,
             ),
             Text(
-              "Link para contato",
+              "Contact link",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -140,7 +140,7 @@ class UpdateData extends StatelessWidget {
             ),
             RaisedButton(
               child: Text(
-                "    Salvar Post    ",
+                "    Save Post    ",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
@@ -157,9 +157,9 @@ class UpdateData extends StatelessWidget {
                 if (ret == true) {
                   await getPosts();
                   construct();
-                  showMessage(context, "Post editado com sucesso!");
+                  showMessage(context, "Post edited successfully!");
                 } else {
-                  showMessage(context, "Houve um erro ao salvar as alterações");
+                  showMessage(context, "The post cannot be edited");
                 }
               },
               color: Colors.teal,

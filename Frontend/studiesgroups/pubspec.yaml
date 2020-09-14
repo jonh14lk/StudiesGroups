@@ -1,4 +1,4 @@
-name: studiesgroups
+name: StudiesGroups
 description: A new Flutter project.
 
 publish_to: "none"
@@ -11,13 +11,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  url_launcher: ^5.5.0
+  http: ^0.12.2
+  connectivity: ^0.4.9+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  url_launcher: ^5.5.0
-  http: ^0.12.2
-  connectivity: ^0.4.9+2
 
 flutter:
   uses-material-design: true

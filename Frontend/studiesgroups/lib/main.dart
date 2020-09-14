@@ -11,7 +11,7 @@ bool can = true;
 
 void main() async {
   await http.get('https://studiesgroups.herokuapp.com/').timeout(
-    Duration(seconds: 5),
+    Duration(seconds: 15),
     onTimeout: () {
       can = false;
       return;

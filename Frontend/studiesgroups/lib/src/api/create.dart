@@ -2,7 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<bool> createPost(String title, String des, String whatsapp) async {
+Future<int> createPost(String title, String des, String whatsapp) async {
+  if (title.length >= 27) {
+    return 0;
+  }
   final http.Response response = await http.post(
     'https://studiesgroups.herokuapp.com/',
     headers: <String, String>{
@@ -16,7 +19,7 @@ Future<bool> createPost(String title, String des, String whatsapp) async {
   );
   final parsed = json.decode(response.body);
   if (parsed['message'] == "error") {
-    return false;
+    return 1;
   }
-  return true;
+  return 2;
 }

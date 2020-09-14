@@ -23,7 +23,7 @@ class Delete extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Digite o ID do post que deseja apagar",
+              "ID of the post you want to delete",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class Delete extends StatelessWidget {
             ),
             RaisedButton(
               child: Text(
-                "    Apagar Post    ",
+                "    Erase post    ",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
@@ -51,9 +51,9 @@ class Delete extends StatelessWidget {
                 bool ret = await deletePost(controllerID.text);
                 await getPosts();
                 if (ret == true) {
-                  showPopup(context, "Post apagado com sucesso!");
+                  showPopup(context, "Post deleted successfully!");
                 } else {
-                  showPopup(context, "Post não encontrado");
+                  showPopup(context, "The post cannot be deleted");
                 }
               },
               color: Colors.teal,

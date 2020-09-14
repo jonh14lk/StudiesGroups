@@ -25,7 +25,7 @@ class Add extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Título",
+              "Title",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -41,7 +41,7 @@ class Add extends StatelessWidget {
               height: 50.0,
             ),
             Text(
-              "Descrição",
+              "Description",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class Add extends StatelessWidget {
               height: 50.0,
             ),
             Text(
-              "Link para contato",
+              "Contact link",
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class Add extends StatelessWidget {
             ),
             RaisedButton(
               child: Text(
-                "    Criar Post    ",
+                "    Create post    ",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
@@ -82,17 +82,19 @@ class Add extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
-                bool ret = await createPost(
+                int ret = await createPost(
                   controllerTitle.text,
                   controllerDescription.text,
                   controllerContact.text,
                 );
                 await getPosts();
-                if (ret == true) {
-                  showID(
-                      context, "ID do seu post:", posts[posts.length - 1].id);
+                if (ret == 2) {
+                  showID(context, "Post ID:", posts[posts.length - 1].id);
+                } else if (ret == 1) {
+                  showID(context, "The post cannot be created", "");
                 } else {
-                  showID(context, "Erro ao criar post", "");
+                  showID(
+                      context, "The title must be less than 27 characters", "");
                 }
               },
               color: Colors.teal,

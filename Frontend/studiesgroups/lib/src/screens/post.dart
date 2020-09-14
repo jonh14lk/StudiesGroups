@@ -46,7 +46,7 @@ class ShowPost extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'Descrição',
+              'Description',
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class ShowPost extends StatelessWidget {
             ),
             RaisedButton(
               child: Text(
-                "Entrar em Contato",
+                "Get in touch",
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,

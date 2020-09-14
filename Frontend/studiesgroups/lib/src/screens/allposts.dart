@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:studiesgroups/src/screens/post.dart';
+import 'post.dart';
 import '../api/listall.dart';
 
 BuildContext contextt;
@@ -14,9 +14,6 @@ void construct() {
 
     if (posts[i].description.length > 100) {
       description = description.substring(0, 100) + '...';
-    }
-    if (posts[i].title.length > 30) {
-      title = title.substring(0, 30) + '...';
     }
 
     var cardItem = ClipRRect(
@@ -65,7 +62,7 @@ void construct() {
                         Navigator.pushNamed(contextt, '/showpost');
                       },
                       child: Text(
-                        'Ver mais',
+                        'See more',
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Color(0xFF2d3447),
