@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:basic_utils/basic_utils.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 List<Post> posts = [];
 
@@ -22,10 +23,19 @@ List<Post> parse(String responseBody) {
 
 Future getPosts() async {
   posts.clear();
-  final http.Response response =
-      await http.get('https://studiesgroups.herokuapp.com/');
-  String st = response.body;
-  posts = parse(st);
+  Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
+  Map<String, String> queryParameters = {
+    'user': DotEnv().env['USER'],
+    'password': DotEnv().env['PASSWORD'],
+  };
+  final response = await HttpUtils.getForString(
+    'https://studiesgroups.herokuapp.com/',
+    queryParameters: queryParameters,
+    headers: headers,
+  );
+  posts = parse(response);
   sortPostsBydate();
 }
 

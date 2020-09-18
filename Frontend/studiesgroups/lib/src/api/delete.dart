@@ -1,15 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:basic_utils/basic_utils.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<bool> deletePost(String id) async {
-  final http.Response response = await http.delete(
-    'https://studiesgroups.herokuapp.com/$id',
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
+  Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
+  Map<String, String> queryParameters = {
+    'user': DotEnv().env['USER'],
+    'password': DotEnv().env['PASSWORD'],
+  };
+  final response = await HttpUtils.getForString(
+    'https://studiesgroups.herokuapp.com/',
+    queryParameters: queryParameters,
+    headers: headers,
   );
-  final parsed = json.decode(response.body);
+  final parsed = json.decode(response);
   if (parsed['message'] == "user not found") {
     return false;
   }
