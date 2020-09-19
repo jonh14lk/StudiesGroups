@@ -26,7 +26,7 @@ Future getPosts() async {
   Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
-  Map<String, String> queryParameters = {
+  Map<String, dynamic> queryParameters = {
     'user': DotEnv().env['USER'],
     'password': DotEnv().env['PASSWORD'],
   };
@@ -35,6 +35,7 @@ Future getPosts() async {
     queryParameters: queryParameters,
     headers: headers,
   );
+  print(response);
   posts = parse(response);
   sortPostsBydate();
 }
