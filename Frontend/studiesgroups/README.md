@@ -2,7 +2,7 @@
 
 <h1>StudiesGroups</h1>
 
-![](https://github-size-badge.herokuapp.com/jonh14lk/StudiesGroups.svg) ![](https://img.shields.io/badge/last%20commit-September-yellow) ![](https://img.shields.io/badge/Dart-83.9%25-blue)
+![](https://img.shields.io/badge/size-17.4%20MB-green) ![](https://img.shields.io/badge/last%20commit-September-yellow) ![](https://img.shields.io/badge/Dart-81.5%25-blue)
 
 <img src="https://i.ibb.co/z8G71vL/logo.png" width="100" height="100"/>
 
