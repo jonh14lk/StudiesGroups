@@ -12,7 +12,7 @@ Future<bool> deletePost(String id) async {
     'password': DotEnv().env['PASSWORD'],
     'id': id,
   };
-  final response = await HttpUtils.getForString(
+  final response = await HttpUtils.deleteForString(
     'https://studiesgroups.herokuapp.com/',
     queryParameters: queryParameters,
     headers: headers,
